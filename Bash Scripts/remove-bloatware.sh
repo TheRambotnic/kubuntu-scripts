@@ -1,19 +1,16 @@
 #!/bin/bash
-# before using this script, run this command in the terminal: chmod a+x ./remove-bloatware.sh
 
 #
 # @author	Lucas "Rambotnic" Rafael
-# @updated	November 20, 2021
+# @updated	November 23, 2021
 #
 
 # text colors
 declare warning="\033[1;33m" # yellow
-declare regular="\033[1;37m" # white
+declare default="\033[1;0m" # default color
 declare finished="\033[1;32m" # green
 
-echo -e "${warning}========================="
-echo -e "| REMOVING BLOATWARE... |"
-echo -e "=========================${regular}"
+echo -e "${warning}==================================\n\n REMOVING BLOATWARE... \n\n==================================${default}"
 sleep 3
 
 # bloatware packages
@@ -42,16 +39,15 @@ declare -a bloatware=(
 for pkg in "${bloatware[@]}"; do
 	echo -e "\n${warning}****************************"
 	echo -e " Uninstalling $pkg"
-	echo -e "****************************${regular}"
+	echo -e "****************************${default}"
 	sudo apt purge $pkg
 	sleep 2
 done
 
-echo -e "\n${warning}============================"
-echo -e "| REMOVING DEPENDENCIES... |"
-echo -e "============================${regular}"
+echo -e "${warning}\n==================================\n\n REMOVING DEPENDENCIES... \n\n==================================${default}"
 sleep 2
 sudo apt autoremove
+sudo apt-get clean
 
-echo -e "\n${finished}ALL DONE! :)${regular}\n"
+echo -e "\n${finished}ALL DONE! :)${default}\n"
 read # pause execution
