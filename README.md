@@ -7,6 +7,8 @@ These are some bash scripts I've made to make my life easier when installing/rem
 * install-opera.sh
 * install-developer-packages.sh
 
+**HOW TO USE:** Place the above files in any folder, open the terminal inside of said folder and run the following command: `chmod a+x ./*`. After that, simply double click it and choose `Run in Terminal`. Otherwise, you can simply type `./<name-of-file>.sh` to run it inside the terminal.
+
 ## Keyboard Shortcuts
 
 ### Custom
