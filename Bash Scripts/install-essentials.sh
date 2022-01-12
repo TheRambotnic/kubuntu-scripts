@@ -2,7 +2,7 @@
 
 #
 # @author 	Lucas "Rambotnic" Rafael
-# @updated	November 23, 2021
+# @updated	January 11, 2022
 #
 
 # text colors
@@ -40,26 +40,33 @@ installPkgs() {
 		fi
 	done
 
-	echo -e "${install}\n==================================\n\n Configuring package settings... \n\n==================================${normal}"
-	# set caja-open-terminal to open with MATE Terminal instead
-	sudo gsettings set org.mate.applications-terminal exec mate-terminal
+	configurePkgSettings
+	removeDependencies
 
-	# set default terminal emulator to MATE Terminal instead
-	echo -e "${install}* Ubuntu will now setup the terminal emulator.\n\n* Please select the option with /usr/bin/mate-terminal.wrapper\n${normal}"
-	sleep 2
-	sudo update-alternatives --config x-terminal-emulator
-
-	echo -e "${install}\n==================================\n\n Removing unused dependencies... \n\n==================================${normal}"
-	sleep 2
-	sudo apt autoremove
-	sudo apt-get clean
-
-	echo -e "\n${finished}ALL DONE! :)${normal}\n"
+	echo -e "\n${finished}ALL DONE! :)${default}\n"
 	# pause execution
 	read -p "" opt
 	case $opt in
 		* ) exit;;
 	esac
+}
+
+configurePkgSettings() {
+	echo -e "${install}\n==================================\n\n Configuring package settings... \n\n==================================${default}"
+	# set caja-open-terminal to open with MATE Terminal instead
+	sudo gsettings set org.mate.applications-terminal exec mate-terminal
+
+	# set default terminal emulator to MATE Terminal instead
+	echo -e "${install}* Ubuntu will now setup the terminal emulator.\n\n* Please select the option with /usr/bin/mate-terminal.wrapper\n${default}"
+	sleep 2
+	sudo update-alternatives --config x-terminal-emulator
+}
+
+removeDependencies() {
+	echo -e "${install}\n==================================\n\n Removing unused dependencies... \n\n==================================${default}"
+	sleep 2
+	sudo apt autoremove -y
+	sudo apt-get clean
 }
 
 echo -e "This file should be run AFTER remove-bloatware.sh\n\n"
