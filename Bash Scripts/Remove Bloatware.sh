@@ -11,23 +11,11 @@ sleep 3
 # bloatware packages
 declare -a bloatware=(
 	firefox*
-	thunderbird*
 	rhythmbox
 	celluloid
 	shotwell
-	aisleriot
-	gnome-todo
-	gnome-sudoku
-	gnome-mines
-	gnome-mahjongg
-	gnome-bluetooth
 	simple-scan
-	seahorse
-	transmission*
-	file-roller
-	totem*
-	deja-dup*
-	ibus*
+	redshift*
 )
 
 # loop through array and remove packages
@@ -36,7 +24,7 @@ for pkg in "${bloatware[@]}"; do
 	echo -e " Uninstalling $pkg"
 	echo -e "****************************${default}"
 	sudo apt purge $pkg
-	sleep 2
+	sleep 1
 done
 
 echo -e "${yellow}\n==================================\n\n REMOVING DEPENDENCIES... \n\n==================================${default}"
