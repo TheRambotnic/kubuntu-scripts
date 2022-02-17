@@ -1,27 +1,22 @@
 #!/bin/bash
 
-#
-# @author 	Lucas "Rambotnic" Rafael
-# @updated	January 11, 2022
-#
-
 # text colors
-declare default="\033[1;0m" # default color
-declare install="\033[1;33m" # yellow
-declare finished="\033[1;32m" # green
+declare default="\033[1;0m"
+declare yellow="\033[1;33m"
+declare green="\033[1;32m"
 
 installOpera() {
-	echo -e "${install}\n==================================\n\n Adding Opera repository \n\n==================================${default}"
+	echo -e "${yellow}\n==================================\n\n Adding Opera repository \n\n==================================${default}"
 	sleep 1
 	wget -qO - https://deb.opera.com/archive.key | sudo apt-key add -
 	sudo add-apt-repository 'deb https://deb.opera.com/opera-stable/ stable non-free'
 
-	echo -e "${install}\n==================================\n\n Installing Opera Stable \n\n==================================${default}"
+	echo -e "${yellow}\n==================================\n\n Installing Opera Stable \n\n==================================${default}"
 	sleep 1
 	sudo apt-get update
 	sudo apt-get install opera-stable -y
 
-	echo -e "${install}\n==================================\n\n Installing h.264 media codecs \n\n==================================${default}"
+	echo -e "${yellow}\n==================================\n\n Installing h.264 media codecs \n\n==================================${default}"
 	# check to see if Snap Store is installed, since we need to download the codecs from the web
 	declare isSnapInstalled=$(dpkg-query -W -f='${Status}' snapd 2>/dev/null | grep -c "ok installed")
 	if [ $isSnapInstalled = 0 ]; then
@@ -37,7 +32,7 @@ installOpera() {
 
 	removeDependencies
 
-	echo -e "\n${finished}ALL DONE! :)${default}\n"
+	echo -e "\n${green}ALL DONE! :)${default}\n"
 	# pause execution
 	read -p "" opt
 	case $opt in
@@ -46,7 +41,7 @@ installOpera() {
 }
 
 removeDependencies() {
-	echo -e "${install}\n==================================\n\n Removing unused dependencies... \n\n==================================${default}"
+	echo -e "${yellow}\n==================================\n\n Removing unused dependencies... \n\n==================================${default}"
 	sleep 2
 	sudo apt autoremove -y
 	sudo apt-get clean

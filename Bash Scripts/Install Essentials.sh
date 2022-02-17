@@ -1,15 +1,10 @@
 #!/bin/bash
 
-#
-# @author 	Lucas "Rambotnic" Rafael
-# @updated	January 11, 2022
-#
-
 # text colors
-declare default="\033[1;0m" # default color
-declare install="\033[1;33m" # yellow
-declare installed="\033[1;36m" # cyan
-declare finished="\033[1;32m" # green
+declare default="\033[1;0m"
+declare yellow="\033[1;33m"
+declare cyan="\033[1;36m"
+declare green="\033[1;32m"
 
 installPkgs() {
 	# essential packages
@@ -34,10 +29,10 @@ installPkgs() {
 		declare isPkgInstalled=$(dpkg-query -W -f='${Status}' $pkg 2>/dev/null | grep -c "ok installed")
 
 		if [ $isPkgInstalled = 1 ]; then
-			echo -e "${installed}\n*** ${pkg} is already installed. Skipping... ***\n${default}"
+			echo -e "${cyan}\n*** ${pkg} is already installed. Skipping... ***\n${default}"
 			sleep 2
 		else
-			echo -e "${install}\n==================================\n\n Installing ${pkg} \n\n==================================${default}"
+			echo -e "${yellow}\n==================================\n\n Installing ${pkg} \n\n==================================${default}"
 			sleep 1
 			sudo apt-get install $pkg
 		fi
@@ -46,7 +41,7 @@ installPkgs() {
 	configurePkgSettings
 	removeDependencies
 
-	echo -e "\n${finished}ALL DONE! :)${default}\n"
+	echo -e "\n${green}ALL DONE! :)${default}\n"
 	# pause execution
 	read -p "" opt
 	case $opt in
@@ -55,18 +50,18 @@ installPkgs() {
 }
 
 configurePkgSettings() {
-	echo -e "${install}\n==================================\n\n Configuring package settings... \n\n==================================${default}"
+	echo -e "${yellow}\n==================================\n\n Configuring package settings... \n\n==================================${default}"
 	# set caja-open-terminal to open with MATE Terminal instead
 	sudo gsettings set org.mate.applications-terminal exec mate-terminal
 
 	# set default terminal emulator to MATE Terminal instead
-	echo -e "${install}* Ubuntu will now setup the terminal emulator.\n\n* Please select the option with /usr/bin/mate-terminal.wrapper\n${default}"
+	echo -e "${yellow}* Ubuntu will now setup the terminal emulator.\n\n* Please select the option with /usr/bin/mate-terminal.wrapper\n${default}"
 	sleep 2
 	sudo update-alternatives --config x-terminal-emulator
 }
 
 removeDependencies() {
-	echo -e "${install}\n==================================\n\n Removing unused dependencies... \n\n==================================${default}"
+	echo -e "${yellow}\n==================================\n\n Removing unused dependencies... \n\n==================================${default}"
 	sleep 2
 	sudo apt autoremove -y
 	sudo apt-get clean

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# text colors
 declare default="\033[1;0m"
 declare green="\033[1;32m"
 declare yellow="\033[1;33m"
