@@ -22,6 +22,8 @@ installPkgs() {
 		caja
 		caja-open-terminal
 		mate-terminal
+		easytag
+		audacity
 	)
 
 	# update APT
