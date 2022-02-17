@@ -14,15 +14,20 @@ These are some bash scripts I've made to make my life easier when installing/rem
 
 ### Custom
 * **Open System Monitor**
-	* **Shortcut:** CTRL + SHIFT + ESC
-	* **Command:** mate-system-monitor
+	* Shortcut: `CTRL + SHIFT + ESC`
+	* Command: `mate-system-monitor`
 * **Open Control Center**
-	* **Shortcut:** SUPER + I
-	* **Command:** mate-control-center
+	* Shortcut: `SUPER + I`
+	* Command: `mate-control-center`
 * **Open File Explorer**
-	* **Shortcut:** SUPER + E
-	* **Command:** caja
+	* Shortcut: `SUPER + E`
+	* Command: `caja`
+* **Screenshot Tool**
+	* Shortcut: `SUPER + SHIFT + S`
+	* Command: `mate-screenshot --interactive`
 
 ### Default
 * **Show the panel's "Run Application" dialog box**
-	* **Shortcut:** SUPER + R
+	* Shortcut: `SUPER + R`
+* **Hide all normal windows and set focus to the desktop**
+	* Shortcut: `SUPER + M`
