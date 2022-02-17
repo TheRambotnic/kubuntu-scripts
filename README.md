@@ -1,4 +1,4 @@
-# Bash Scripts for Ubuntu MATE 20.04.3
+# Bash Scripts for [Ubuntu MATE](https://ubuntu-mate.org/) 20.04.3
 These are some bash scripts I've made to make my life easier when installing/removing packages because I seriously can't be bothered to use the terminal to do shit manually... 😓
 
 ## Included:
