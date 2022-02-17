@@ -13,10 +13,6 @@ installPkgs() {
 		vlc
 		wine
 		curl
-		gnome-tweaks
-		caja
-		caja-open-terminal
-		mate-terminal
 		easytag
 		audacity
 		gimp
@@ -38,7 +34,6 @@ installPkgs() {
 		fi
 	done
 
-	configurePkgSettings
 	removeDependencies
 
 	echo -e "\n${green}ALL DONE! :)${default}\n"
@@ -49,17 +44,6 @@ installPkgs() {
 	esac
 }
 
-configurePkgSettings() {
-	echo -e "${yellow}\n==================================\n\n Configuring package settings... \n\n==================================${default}"
-	# set caja-open-terminal to open with MATE Terminal instead
-	sudo gsettings set org.mate.applications-terminal exec mate-terminal
-
-	# set default terminal emulator to MATE Terminal instead
-	echo -e "${yellow}* Ubuntu will now setup the terminal emulator.\n\n* Please select the option with /usr/bin/mate-terminal.wrapper\n${default}"
-	sleep 2
-	sudo update-alternatives --config x-terminal-emulator
-}
-
 removeDependencies() {
 	echo -e "${yellow}\n==================================\n\n Removing unused dependencies... \n\n==================================${default}"
 	sleep 2
@@ -67,7 +51,7 @@ removeDependencies() {
 	sudo apt-get clean
 }
 
-echo -e "This file should be run AFTER remove-bloatware.sh\n\n"
+echo -e "This file should be run AFTER 'Remove Bloatware.sh'\n\n"
 while true; do
 	read -p "Do you wish to continue? [y/n] " yn
 	case $yn in
