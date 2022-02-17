@@ -24,6 +24,7 @@ installPkgs() {
 		mate-terminal
 		easytag
 		audacity
+		gimp
 	)
 
 	# update APT
