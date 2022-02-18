@@ -16,6 +16,7 @@ installPkgs() {
 		easytag
 		audacity
 		gimp
+		remmina
 	)
 
 	# update APT
@@ -30,7 +31,7 @@ installPkgs() {
 		else
 			echo -e "${yellow}\n==================================\n\n Installing ${pkg} \n\n==================================${default}"
 			sleep 1
-			sudo apt-get install $pkg
+			sudo apt-get install $pkg -y
 		fi
 	done
 
