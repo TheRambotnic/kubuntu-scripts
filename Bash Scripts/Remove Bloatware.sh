@@ -16,6 +16,7 @@ declare -a bloatware=(
 	shotwell
 	simple-scan
 	redshift*
+	plank
 )
 
 # loop through array and remove packages
