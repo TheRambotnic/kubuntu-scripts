@@ -11,6 +11,7 @@ These are some bash scripts I've made to make my life easier when installing/rem
 **HOW TO USE:** Place the above files in any folder, open the terminal inside of said folder and run the following command: `chmod a+x ./*`. After that, simply double click it and choose `Run in Terminal`. Otherwise, you can simply type `./<name-of-file>.sh` to run it inside the terminal.
 
 ## Keyboard Shortcuts
+`SUPER` in this case would be the Windows logo key.
 
 ### Custom
 * **Open System Monitor**
@@ -31,3 +32,7 @@ These are some bash scripts I've made to make my life easier when installing/rem
 	* Shortcut: `SUPER + R`
 * **Hide all normal windows and set focus to the desktop**
 	* Shortcut: `SUPER + M`
+* **Lock screen**
+	* Shortcut: `SUPER + L`
+* **Switch to workspace above/below/on the left/on the right of the current workspace**
+	* Shortcut: Disabled
