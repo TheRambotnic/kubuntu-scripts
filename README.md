@@ -3,7 +3,7 @@ These are some bash scripts I've made to make my life easier when installing/rem
 
 ## Included:
 * Remove Bloatware.sh
-* Instal Essentials.sh
+* Install Essentials.sh
 * Install Opera.sh
 * Install Developer Packages.sh
 * [scrcpy.sh](https://github.com/Genymobile/scrcpy)
