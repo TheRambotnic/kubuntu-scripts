@@ -17,6 +17,7 @@ installPkgs() {
 		audacity
 		gimp
 		remmina
+		dconf-editor
 	)
 
 	# update APT
