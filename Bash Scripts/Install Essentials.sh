@@ -30,7 +30,9 @@ installPkgs() {
 			echo -e "${cyan}\n*** ${pkg} is already installed. Skipping... ***\n${default}"
 			sleep 2
 		else
-			echo -e "${yellow}\n==================================\n\n Installing ${pkg} \n\n==================================${default}"
+			echo -e "${yellow}\n=================================="
+			echo -e " Installing ${pkg} "
+			echo -e "==================================${default}"
 			sleep 1
 			sudo apt-get install $pkg -y
 		fi
@@ -38,7 +40,8 @@ installPkgs() {
 
 	removeDependencies
 
-	echo -e "\n${green}ALL DONE! :)${default}\n"
+	echo -e "${green}\nALL DONE! :)\n${default}"
+	
 	# pause execution
 	read -p "" opt
 	case $opt in
@@ -47,15 +50,18 @@ installPkgs() {
 }
 
 removeDependencies() {
-	echo -e "${yellow}\n==================================\n\n Removing unused dependencies... \n\n==================================${default}"
+	echo -e "${yellow}\n=================================="
+	echo -e " REMOVING UNUSED DEPENDENCIES... "
+	echo -e "==================================${default}"
 	sleep 2
 	sudo apt autoremove -y
 	sudo apt-get clean
 }
 
-echo -e "This file should be run AFTER 'Remove Bloatware.sh'\n\n"
+echo -e "This file will install essential packages in your system and you will be prompted for your superuser password in order to do so."
+echo -e "NOTE: Please make sure to run this file AFTER 'Remove Bloatware.sh'\n\n"
 while true; do
-	read -p "Do you wish to continue? [y/n] " yn
+	read -p "Do you wish to continue? [y/n]: " yn
 	case $yn in
 		[Nn]* ) exit;;
 		[Yy]* ) installPkgs;;

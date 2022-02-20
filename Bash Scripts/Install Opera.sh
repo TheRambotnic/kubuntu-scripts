@@ -6,19 +6,27 @@ declare yellow="\033[1;33m"
 declare green="\033[1;32m"
 
 installOpera() {
-	echo -e "${yellow}\n==================================\n\n Adding Opera repository \n\n==================================${default}"
+	echo -e "${yellow}\n=================================="
+	echo -e " Adding Opera repository "
+	echo -e "==================================${default}"
 	sleep 1
 	wget -qO - https://deb.opera.com/archive.key | sudo apt-key add -
 	sudo add-apt-repository 'deb https://deb.opera.com/opera-stable/ stable non-free'
 
-	echo -e "${yellow}\n==================================\n\n Installing Opera Stable \n\n==================================${default}"
+	echo -e "${yellow}\n=================================="
+	echo -e " Installing Opera Stable "
+	echo -e "==================================${default}"
 	sleep 1
 	sudo apt-get update
 	sudo apt-get install opera-stable -y
 
-	echo -e "${yellow}\n==================================\n\n Installing h.264 media codecs \n\n==================================${default}"
-	# check to see if Snap Store is installed, since we need to download the codecs from the web
+	echo -e "${yellow}\n=================================="
+	echo -e " Installing media codecs "
+	echo -e "==================================${default}"
+	
+	# check to see if Snap Store is installed in order to download the codecs
 	declare isSnapInstalled=$(dpkg-query -W -f='${Status}' snapd 2>/dev/null | grep -c "ok installed")
+	
 	if [ $isSnapInstalled = 0 ]; then
 		echo "Snap Store was not found. Installing Snap..."
 		sudo apt-get update
@@ -32,7 +40,8 @@ installOpera() {
 
 	removeDependencies
 
-	echo -e "\n${green}ALL DONE! :)${default}\n"
+	echo -e "${green}\nALL DONE! :)\n${default}"
+	
 	# pause execution
 	read -p "" opt
 	case $opt in
@@ -41,15 +50,17 @@ installOpera() {
 }
 
 removeDependencies() {
-	echo -e "${yellow}\n==================================\n\n Removing unused dependencies... \n\n==================================${default}"
+	echo -e "${yellow}\n=================================="
+	echo -e " REMOVING UNUSED DEPENDENCIES... "
+	echo -e "==================================${default}"
 	sleep 2
 	sudo apt autoremove -y
 	sudo apt-get clean
 }
 
-echo -e "This file will install Opera Browser in your computer.\n\n"
+echo -e "This file will install Opera Browser in your computer and you will be prompted for your superuser password in order to do so.\n\n"
 while true; do
-	read -p "Do you wish to continue? [y/n] " yn
+	read -p "Do you wish to continue? [y/n]: " yn
 	case $yn in
 		[Nn]* ) exit;;
 		[Yy]* ) installOpera;;
