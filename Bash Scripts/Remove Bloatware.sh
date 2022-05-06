@@ -5,17 +5,12 @@ declare yellow="\033[1;33m"
 declare default="\033[1;0m"
 declare green="\033[1;32m"
 
-removeBloatware() {
-	echo -e "${yellow}==============================="
-	echo -e " REMOVING BLOATWARE... "
-	echo -e "===============================${default}"
-	sleep 2
-
+removeSystemBloatware() {
 	# bloatware packages
-	declare -a bloatware=(
-		firefox*
+	declare -a sysBloatware=(
 		rhythmbox
 		celluloid
+		mpv
 		shotwell
 		simple-scan
 		redshift*
@@ -23,13 +18,49 @@ removeBloatware() {
 	)
 
 	# loop through array and remove packages
-	for pkg in "${bloatware[@]}"; do
+	for pkg in "${sysBloatware[@]}"; do
 		echo -e "${yellow}\n****************************"
 		echo -e " Uninstalling $pkg "
 		echo -e "****************************${default}"
 		sudo apt purge $pkg -y
 		sleep 1
 	done
+}
+
+removeSnapBloatware() {
+	# bloatware Snaps
+	declare -a snapBloatware=(
+		firefox
+	)
+
+	# check to see if Snap is installed
+	declare isSnapInstalled=$(dpkg-query -W -f='${Status}' snapd 2>/dev/null | grep -c "ok installed")
+	
+	if [ $isSnapInstalled = 0 ]; then
+		echo "Snap was not found. Installing Snap..."
+		sudo apt-get update
+		sudo apt-get install snapd -y
+		sleep 2
+	else
+		# loop through array and remove Snaps
+		for snap in "${snapBloatware[@]}"; do
+			echo -e "${yellow}\n****************************"
+			echo -e " Uninstalling $snap "
+			echo -e "****************************${default}"
+			sudo snap remove $snap
+			sleep 1
+		done
+	fi
+}
+
+removeBloatware() {
+	echo -e "${yellow}==============================="
+	echo -e " REMOVING BLOATWARE... "
+	echo -e "===============================${default}"
+	sleep 2
+
+	removeSystemBloatware
+	removeSnapBloatware
 
 	echo -e "${yellow}\n==============================="
 	echo -e " REMOVING DEPENDENCIES... "
@@ -48,11 +79,12 @@ removeBloatware() {
 }
 
 echo -e "This file will remove a few pre-installed packages from your computer and you will be prompted for your superuser password in order to do so.\n\n"
+
 while true; do
 	read -p "Do you wish to continue? [y/n]: " yn
 	case $yn in
 		[Nn]* ) exit;;
 		[Yy]* ) removeBloatware;;
-		* ) echo "Please select yes (Y) or no (N). ";;
+		* ) echo -e "\nPlease select yes (Y) or no (N). ";;
 	esac
 done
