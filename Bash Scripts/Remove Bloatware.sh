@@ -48,6 +48,7 @@ removeSnapBloatware() {
 			echo -e " Uninstalling $snap "
 			echo -e "****************************${default}"
 			sudo snap remove $snap
+			sudo rm -rf ~/snap/$snap
 			sleep 1
 		done
 	fi
