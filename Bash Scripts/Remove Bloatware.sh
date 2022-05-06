@@ -78,6 +78,7 @@ removeBloatware() {
 	esac
 }
 
+echo -e "\033]2;Remove Bloatware\007"
 echo -e "This file will remove a few pre-installed packages from your computer and you will be prompted for your superuser password in order to do so.\n\n"
 
 while true; do

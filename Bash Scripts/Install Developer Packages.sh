@@ -57,12 +57,13 @@ installDevPkgs() {
 	esac
 }
 
+echo -e "\033]2;Install Developer Packages\007"
 echo -e "This file will install a few developer packages on your computer and you will be prompted for your superuser password in order to do so.\n\n"
 while true; do
 	read -p "Do you wish to continue? [y/n]: " yn
 	case $yn in
 		[Nn]* ) exit;;
 		[Yy]* ) installDevPkgs;;
-		* ) echo "Please select yes (Y) or no (N). ";;
+		* ) echo -e "\nPlease select yes (Y) or no (N). ";;
 	esac
 done

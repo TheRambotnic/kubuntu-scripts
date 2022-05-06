@@ -73,6 +73,7 @@ setup() {
 	sudo dconf write /org/ayatana/indicator/datetime/custom-time-format "'%d/%m/%Y %H:%M'"
 }
 
+echo -e "\033]2;Install Essentials\007"
 echo -e "This file will install essential packages on your computer and you will be prompted for your superuser password in order to do so."
 echo -e "NOTE: Please make sure to run this file AFTER 'Remove Bloatware.sh'\n\n"
 while true; do
@@ -80,6 +81,6 @@ while true; do
 	case $yn in
 		[Nn]* ) exit;;
 		[Yy]* ) installPkgs;;
-		* ) echo "Please select yes (Y) or no (N). ";;
+		* ) echo -e "\nPlease select yes (Y) or no (N). ";;
 	esac
 done
