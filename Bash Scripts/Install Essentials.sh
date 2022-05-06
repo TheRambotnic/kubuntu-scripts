@@ -69,11 +69,11 @@ setup() {
 	sudo localectl set-locale LC_TIME=en_US.UTF8 LC_NUMERIC=pt_BR.UTF8 LC_MONETARY=pt_BR.UTF8
 
 	# change Date & Time format
-	sudo gsettings set com.canonical.indicator.datetime.time-format 'custom'
-	sudo gsettings set com.canonical.indicator.datetime.custom-time-format '%d/%m/%Y %H:%M'
+	sudo dconf write /org/ayatana/indicator/datetime/time-format "'custom'"
+	sudo dconf write /org/ayatana/indicator/datetime/custom-time-format "'%d/%m/%Y %H:%M'"
 }
 
-echo -e "This file will install essential packages in your system and you will be prompted for your superuser password in order to do so."
+echo -e "This file will install essential packages on your computer and you will be prompted for your superuser password in order to do so."
 echo -e "NOTE: Please make sure to run this file AFTER 'Remove Bloatware.sh'\n\n"
 while true; do
 	read -p "Do you wish to continue? [y/n]: " yn
