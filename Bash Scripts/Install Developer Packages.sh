@@ -38,9 +38,22 @@ installDevPkgs() {
 		sudo apt-get install $pkg -y
 	done
 
-	# NodeJS
+	# Node packages
+	declare -a nodePkgs=(
+		n
+		http-server
+	)
+
 	sudo npm cache clean -f
-	sudo npm install -g n
+
+	for pkg in "${nodePkgs[@]}"; do
+		echo -e "${yellow}\n=================================="
+		echo -e " Node.js: Installing ${pkg} "
+		echo -e "==================================${default}"
+		sleep 1
+		sudo npm install -g $pkg
+	done
+	
 	sudo n latest
 
 	echo -e "${yellow}\n*** Removing unused dependencies... ***\n${default}"
