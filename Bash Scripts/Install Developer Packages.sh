@@ -57,7 +57,7 @@ installDevPkgs() {
 	esac
 }
 
-echo -e "This file will install Opera Browser in your computer and you will be prompted for your superuser password in order to do so.\n\n"
+echo -e "This file will install a few developer packages on your computer and you will be prompted for your superuser password in order to do so.\n\n"
 while true; do
 	read -p "Do you wish to continue? [y/n]: " yn
 	case $yn in

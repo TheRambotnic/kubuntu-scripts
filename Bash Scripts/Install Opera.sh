@@ -58,7 +58,7 @@ removeDependencies() {
 	sudo apt-get clean
 }
 
-echo -e "This file will install Opera Browser in your computer and you will be prompted for your superuser password in order to do so.\n\n"
+echo -e "This file will install the Opera Browser on your computer and you will be prompted for your superuser password in order to do so.\n\n"
 while true; do
 	read -p "Do you wish to continue? [y/n]: " yn
 	case $yn in

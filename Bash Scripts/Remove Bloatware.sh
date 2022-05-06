@@ -47,7 +47,7 @@ removeBloatware() {
 	esac
 }
 
-echo -e "This file will remove a few pre-installed packages from your system and you will be prompted for your superuser password in order to do so.\n\n"
+echo -e "This file will remove a few pre-installed packages from your computer and you will be prompted for your superuser password in order to do so.\n\n"
 while true; do
 	read -p "Do you wish to continue? [y/n]: " yn
 	case $yn in
