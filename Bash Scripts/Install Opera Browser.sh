@@ -36,7 +36,7 @@ installOpera() {
 
 	# get codec from Snap
 	sudo snap install chromium-ffmpeg
-	sudo cp /snap/chromium-ffmpeg/current/chromium-ffmpeg-106454/chromium-ffmpeg/libffmpeg.so /usr/lib/x86_64-linux-gnu/opera/ # move codec file to Opera's directory
+	sudo cp /snap/chromium-ffmpeg/current/chromium-ffmpeg-108372/chromium-ffmpeg/libffmpeg.so /usr/lib/x86_64-linux-gnu/opera/ # move codec file to Opera's directory
 
 	removeDependencies
 
