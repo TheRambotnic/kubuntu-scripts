@@ -11,8 +11,8 @@ installPkgs() {
 	declare -a essentials=(
 		snapd
 		gimp
-		remmina
 		gnome-keyring
+		qalculate-gtk
 	)
 	
 	# Include these if you want to:
@@ -66,7 +66,7 @@ setup() {
 	echo -e "==================================${default}"
 	sleep 2
 
-	# change Date & Time, Numeric and Monetary locales to English and Brazilian Portuguese respectively
+	# change Date & Time locale to English and Numeric/Monetary locales to Brazilian Portuguese
 	sudo localectl set-locale LC_TIME=en_US.UTF8 LC_NUMERIC=pt_BR.UTF8 LC_MONETARY=pt_BR.UTF8
 }
 
