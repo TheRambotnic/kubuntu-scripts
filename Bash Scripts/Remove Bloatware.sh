@@ -12,7 +12,8 @@ removeSystemBloatware() {
 		kmahjongg
 		kmines
 		kpat
-		krdc
+		ksudoku
+		kcalc
 		kwalletmanager
 		konversation
 		thunderbird*
