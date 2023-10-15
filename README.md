@@ -1,4 +1,4 @@
-# Bash Scripts for [Kubuntu 22.04.1 LTS](https://kubuntu.org/)
+# Bash Scripts for [Kubuntu 22.04.3 LTS](https://kubuntu.org/)
 These are some bash scripts I've made to make my life easier when installing/removing packages because I seriously can't be bothered to use the terminal to do shit manually... 😓
 
 ## Included:
@@ -8,10 +8,10 @@ These are some bash scripts I've made to make my life easier when installing/rem
 * Install Developer Packages.sh
 * [scrcpy.sh](https://github.com/Genymobile/scrcpy)
 
-**HOW TO USE:** Right click the file and click `Run In Konsole`.
+**HOW TO USE:** Open the scripts folder in the terminal and type `sudo chmod a+x ./*`, then run file you want.
 
 ## Keyboard Shortcuts
-`Meta` in this case would be the Windows logo key.
+These are equivalent to Windows' shortcuts. `Meta` in this case would be the Windows logo key.
 
 ### Applications
 * **Dolphin**
@@ -27,7 +27,7 @@ These are some bash scripts I've made to make my life easier when installing/rem
 
 ### System Services
 * **Plasma**
-	* Activate Minimize all Windows Applet: `Meta + M`
+	* Show Desktop: `Meta + M`
 	* Open Klipper at Mouse Position: `Meta + V`
 * **Session Management**
 	* Lock Session: `Meta + L`
