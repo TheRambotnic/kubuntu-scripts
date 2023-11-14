@@ -14,7 +14,6 @@ removeSystemBloatware() {
 		kpat
 		ksudoku
 		kcalc
-		kwalletmanager
 		konversation
 		thunderbird*
 		skanlite
