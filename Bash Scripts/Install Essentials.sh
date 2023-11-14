@@ -66,8 +66,8 @@ setup() {
 	echo -e "==================================${default}"
 	sleep 2
 
-	# change Date & Time locale to English and Numeric/Monetary locales to Brazilian Portuguese
-	sudo localectl set-locale LC_TIME=en_US.UTF8 LC_NUMERIC=pt_BR.UTF8 LC_MONETARY=pt_BR.UTF8
+	# change Date & Time locale to British English and Numeric/Monetary locales to Brazilian Portuguese
+	sudo localectl set-locale LC_TIME=en_GB.UTF8 LC_NUMERIC=pt_BR.UTF8 LC_MONETARY=pt_BR.UTF8
 }
 
 echo -e "\033]2;Install Essentials\007"
