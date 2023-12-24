@@ -11,15 +11,14 @@ installPkgs() {
 	declare -a essentials=(
 		snapd
 		gimp
-		gnome-keyring
 		qalculate-gtk
+		wine
 	)
 	
 	# Include these if you want to:
-	# 	wine
 	# 	curl
-	# 	easytag
-	# 	audacity
+	# 	easytag (Alternative to Mp3tag for Windows)
+	# 	audacity (Alternative to Adobe Audition for Windows)
 
 	# update APT
 	sudo apt-get update
