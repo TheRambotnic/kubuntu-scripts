@@ -13,12 +13,11 @@ installPkgs() {
 		gimp
 		qalculate-gtk
 		wine
+		remmina
+		audacity
+		curl
+		easytag
 	)
-	
-	# Include these if you want to:
-	# 	curl
-	# 	easytag (Alternative to Mp3tag for Windows)
-	# 	audacity (Alternative to Adobe Audition for Windows)
 
 	# update APT
 	sudo apt-get update
