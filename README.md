@@ -5,6 +5,7 @@ These are some bash scripts I've made to make my life easier when installing/rem
 * Remove Bloatware.sh
 * Install Essentials.sh
 * Install Developer Packages.sh
+* [Vencord Installer.sh](https://github.com/Vendicated/Vencord)
 * [scrcpy.sh](https://github.com/Genymobile/scrcpy)
 
 **HOW TO USE:** Open the scripts folder in the terminal and type `sudo chmod a+x ./*`, then run file you want.
