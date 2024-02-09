@@ -4,6 +4,7 @@ These are some bash scripts I've made to make my life easier when installing/rem
 ## Included:
 * Remove Bloatware.sh
 * Install Essentials.sh
+* [Install Floorp Browser.sh](https://floorp.app/en/)
 * Install Developer Packages.sh
 * [Vencord Installer.sh](https://github.com/Vendicated/Vencord)
 * [scrcpy.sh](https://github.com/Genymobile/scrcpy)
