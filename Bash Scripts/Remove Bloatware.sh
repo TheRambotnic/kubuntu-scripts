@@ -16,6 +16,7 @@ removeSystemBloatware() {
 		kcalc
 		krdc
 		konversation
+		kde-spectacle
 		thunderbird*
 		skanlite
 	)
