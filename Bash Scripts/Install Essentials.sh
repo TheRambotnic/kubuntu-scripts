@@ -17,6 +17,7 @@ installPkgs() {
 		audacity
 		curl
 		easytag
+		flameshot
 	)
 
 	# update APT
