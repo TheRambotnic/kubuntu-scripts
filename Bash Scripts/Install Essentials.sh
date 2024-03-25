@@ -7,9 +7,11 @@ declare cyan="\033[1;36m"
 declare green="\033[1;32m"
 
 installPkgs() {
-	# essential APT packages
+	# Install Nala (APT frontend replacement)
+	sudo apt install nala -y
+
+	# essential packages
 	declare -a essentialsApt=(
-		snapd
 		gimp
 		qalculate-gtk
 		wine
@@ -19,12 +21,8 @@ installPkgs() {
 		easytag
 		flameshot
 		autokey-qt
-		autokey-common
 		numlockx
 	)
-
-	# update APT
-	sudo apt-get update
 
 	for pkg in "${essentialsApt[@]}"; do
 		declare isPkgInstalled=$(dpkg-query -W -f='${Status}' $pkg 2>/dev/null | grep -c "ok installed")
@@ -37,7 +35,7 @@ installPkgs() {
 			echo -e " Installing ${pkg} "
 			echo -e "==================================${default}"
 			sleep 1
-			sudo apt-get install $pkg -y
+			sudo nala install $pkg -y
 		fi
 	done
 
@@ -58,7 +56,7 @@ installPkgs() {
 			echo -e " Installing ${pkg} "
 			echo -e "==================================${default}"
 			sleep 1
-			sudo snap install --classic $pkg -y
+			sudo snap install --classic $pkg
 		fi
 	done
 
@@ -99,8 +97,8 @@ removeDependencies() {
 	echo -e " REMOVING UNUSED DEPENDENCIES... "
 	echo -e "==================================${default}"
 	sleep 2
-	sudo apt autoremove -y
-	sudo apt-get clean
+	sudo nala autoremove -y
+	sudo nala clean
 }
 
 setup() {
