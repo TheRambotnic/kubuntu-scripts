@@ -1,4 +1,4 @@
-# Bash Scripts for [Kubuntu 22.04.3 LTS](https://kubuntu.org/)
+# Bash Scripts for [Kubuntu 22.04.4 LTS](https://kubuntu.org/)
 These are some bash scripts I've made to make my life easier when installing/removing packages because I seriously can't be bothered to use the terminal to do shit manually... 😓
 
 ## Included:
