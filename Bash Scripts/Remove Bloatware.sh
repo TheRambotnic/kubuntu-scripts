@@ -31,33 +31,6 @@ removeSystemBloatware() {
 	done
 }
 
-removeSnapBloatware() {
-	# bloatware Snaps
-	declare -a snapBloatware=(
-		firefox
-	)
-
-	# check to see if Snap is installed
-	declare isSnapInstalled=$(dpkg-query -W -f='${Status}' snapd 2>/dev/null | grep -c "ok installed")
-
-	if [ $isSnapInstalled = 0 ]; then
-		echo "Snap was not found. Installing Snap..."
-		sudo apt-get update
-		sudo apt-get install snapd -y
-		sleep 2
-	else
-		# loop through array and remove Snaps
-		for snapPkg in "${snapBloatware[@]}"; do
-			echo -e "${yellow}\n****************************"
-			echo -e " Uninstalling $snapPkg "
-			echo -e "****************************${default}"
-			sudo snap remove $snapPkg
-			sudo rm -rf ~/snap/$snapPkg
-			sleep 1
-		done
-	fi
-}
-
 removeBloatware() {
 	echo -e "${yellow}==============================="
 	echo -e " REMOVING BLOATWARE... "
@@ -65,7 +38,6 @@ removeBloatware() {
 	sleep 2
 
 	removeSystemBloatware
-	removeSnapBloatware
 
 	echo -e "${yellow}\n==============================="
 	echo -e " REMOVING DEPENDENCIES... "
