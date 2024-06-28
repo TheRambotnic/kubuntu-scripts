@@ -76,7 +76,7 @@ installPkgs() {
 	setup
 
 	echo -e "${CLR_GREEN}\nALL DONE! :)\n${CLR_DEFAULT}"
-	echo "Some settings require you to log out and log back into your session to take effect."
+	echo "Some settings require a session restart to take effect."
 	
 	while true; do
 		read -p "Would you like to restart your session now? (You can do this later if you want) [y/n]: " yn
@@ -131,6 +131,9 @@ setup() {
 	# Set NumLock to be ON
 	numlockx on
 
+	# Move custom .zshrc file to the correct directory
+	mv "../Shell Configs/zshrc" ~/.zshrc
+
 	# Set zsh to be the default shell
 	declare USERNAME=$(whoami)
 	sudo sed -i -e "s|root:/bin/bash|root:/usr/bin/zsh|g" -e "s|$USERNAME:/bin/bash|$USERNAME:/usr/bin/zsh|g" /etc/passwd
@@ -138,6 +141,7 @@ setup() {
 
 # Entry point
 echo -e "\033]2;Install Essentials\007"
+
 echo -e "This file will install essential packages on your computer and you will be prompted for your superuser password in order to do so."
 echo -e "NOTE: Please make sure to run this file AFTER 'Remove Bloatware.sh'\n\n"
 while true; do
