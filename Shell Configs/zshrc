@@ -82,6 +82,7 @@ alias ls="ls --color"
 alias lsa="ls --color -a"
 alias devip="hostname -I"
 alias upd-nala="curl https://gitlab.com/volian/volian-archive/-/raw/main/install-nala.sh | bash"
+alias listdeps="apt-cache depends --installed"
 
 #[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 #source <(fzf --zsh)
