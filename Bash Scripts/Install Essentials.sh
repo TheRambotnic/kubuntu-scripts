@@ -30,6 +30,7 @@ installPkgs() {
 		fastfetch
 		zsh
 		htop
+		qdirstat
 	)
 
 	for pkg in "${essentialsApt[@]}"; do
