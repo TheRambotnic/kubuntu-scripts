@@ -29,6 +29,7 @@ installPkgs() {
 		numlockx
 		fastfetch
 		zsh
+		htop
 	)
 
 	for pkg in "${essentialsApt[@]}"; do
@@ -38,11 +39,7 @@ installPkgs() {
 			echo -e "${CLR_CYAN}\n*** ${pkg} is already installed. Skipping... ***\n${CLR_DEFAULT}"
 			sleep 1
 		else
-			echo -e "${CLR_YELLOW}"
-			echo -e "\n=================================="
-			echo -e " Installing ${pkg} "
-			echo -e "=================================="
-			echo -e "${CLR_DEFAULT}"
+			displayInstallMessage $pkg
 			sudo nala install $pkg -y
 			sleep 1
 		fi
@@ -61,15 +58,25 @@ installPkgs() {
 			echo -e "${CLR_CYAN}\n*** ${pkg} is already installed. Skipping... ***\n${CLR_DEFAULT}"
 			sleep 1
 		else
-			echo -e "${CLR_YELLOW}"
-			echo -e "\n=================================="
-			echo -e " Installing ${pkg} "
-			echo -e "=================================="
-			echo -e "${CLR_DEFAULT}"
+			displayInstallMessage $pkg
 			sudo snap install --classic $pkg
 			sleep 1
 		fi
 	done
+
+	# Neovim
+	displayInstallMessage "neovim"
+	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+	sudo rm -rf /opt/nvim
+	sudo tar -C /opt -xzf nvim-linux64.tar.gz
+
+	if [ ! -d ~/.config/nvim/ ]; then
+		mkdir ~/.config/nvim/
+	fi
+
+	mv "../Shell Configs/init.lua" ~/.config/nvim/
+
+	sleep 1
 
 	installGraphicsDrivers
 	removeDependencies
@@ -89,11 +96,7 @@ installPkgs() {
 }
 
 installGraphicsDrivers() {
-	echo -e "${CLR_YELLOW}"
-	echo -e "\n=================================="
-	echo -e " Installing graphics drivers... "
-	echo -e "=================================="
-	echo -e "${CLR_DEFAULT}"
+	displayInstallMessage "graphics drivers"
 	sleep 1
 
 	gpuInfo=$(lspci | grep -i vga)
@@ -137,6 +140,14 @@ setup() {
 	# Set zsh to be the default shell
 	declare USERNAME=$(whoami)
 	sudo sed -i -e "s|root:/bin/bash|root:/usr/bin/zsh|g" -e "s|$USERNAME:/bin/bash|$USERNAME:/usr/bin/zsh|g" /etc/passwd
+}
+
+displayInstallMessage() {
+	echo -e "${CLR_YELLOW}"
+	echo -e "\n=================================="
+	echo -e " Installing $1 "
+	echo -e "=================================="
+	echo -e "${CLR_DEFAULT}"
 }
 
 # Entry point
