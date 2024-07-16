@@ -18,6 +18,10 @@ setopt histignorealldups sharehistory
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
 
+# Allow CTRL + Left/Right Arrows to move cursor between words
+bindkey ";5C" forward-word
+bindkey ";5D" backward-word
+
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
 SAVEHIST=1000
@@ -66,7 +70,7 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
-export PATH="$PATH:$HOME/.local/bin:/usr/bin/zoxide:$HOME/node_modules/.bin"
+export PATH="$PATH:$HOME/.local/bin:/usr/bin/zoxide:$HOME/node_modules/.bin:/opt/nvim-linux64/bin"
 
 # Replaces `cd` with zoxide
 eval "$(zoxide init --cmd cd zsh)"
@@ -76,6 +80,11 @@ alias cdq="zoxide query -l -s | less"
 alias cls="clear"
 alias ls="ls --color"
 alias lsa="ls --color -a"
+alias devip="hostname -I"
+alias upd-nala="curl https://gitlab.com/volian/volian-archive/-/raw/main/install-nala.sh | bash"
+
+#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#source <(fzf --zsh)
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
