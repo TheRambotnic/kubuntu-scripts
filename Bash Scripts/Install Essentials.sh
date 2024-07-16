@@ -103,7 +103,7 @@ installGraphicsDrivers() {
 
 	if [[ $gpuInfo == *"NVIDIA Corporation"* ]]; then
 		echo "NVIDIA GPU detected. Installing NVIDIA drivers..."
-		sudo add-apt-repository ppa:graphics-drivers/ppa && sudo dpkg --add-architecture i386 && sudo nala update && sudo nala install -y nvidia-driver-545 libvulkan1 libvulkan1:i386
+		sudo add-apt-repository ppa:graphics-drivers/ppa && sudo dpkg --add-architecture i386 && sudo nala update && sudo nala install -y nvidia-driver-555 libvulkan1 libvulkan1:i386
 	elif [[ $gpu_info == *"Advanced Micro Devices"* ]]; then
 		echo "AMD GPU detected. Installing AMD drivers..."
 		sudo add-apt-repository ppa:kisak/kisak-mesa && sudo dpkg --add-architecture i386 && sudo nala update && sudo nala upgrade && sudo nala install -y libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386
