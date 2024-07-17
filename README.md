@@ -40,3 +40,5 @@ These are equivalent to Windows' shortcuts. `Meta` in this case would be the Win
 	* Shortcut: `F4`
 * **Terminal**
 	* Shortcut: `NONE`
+* **Show Hidden Files**
+	* Shortcut: `Alt + H, Alt + H`
