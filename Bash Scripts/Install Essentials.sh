@@ -7,26 +7,25 @@ declare CLR_CYAN="\033[1;36m"
 declare CLR_GREEN="\033[1;32m"
 
 installPkgs() {
-	# Install Nala (APT frontend replacement)
-	curl https://gitlab.com/volian/volian-archive/-/raw/main/install-nala.sh | bash
+	displayInstallMessage "curl"
+	sudo apt install curl
 
-	# Setup repositories
-	sudo add-apt-repository ppa:zhangsongcui3371/fastfetch
+	curlDownloads
+	setupRepositories
 
 	sudo nala update
 
 	# Essential packages
 	declare -a essentialsApt=(
+		firefox
 		gimp
 		qalculate-gtk
 		wine
 		remmina
 		audacity
-		curl
 		easytag
 		flameshot
 		autokey-qt
-		numlockx
 		fastfetch
 		zsh
 		htop
@@ -65,18 +64,6 @@ installPkgs() {
 		fi
 	done
 
-	# Neovim
-	displayInstallMessage "neovim"
-	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
-	sudo rm -rf /opt/nvim
-	sudo tar -C /opt -xzf nvim-linux64.tar.gz
-
-	if [ ! -d ~/.config/nvim/ ]; then
-		mkdir ~/.config/nvim/
-	fi
-
-	mv "../Shell Configs/init.lua" ~/.config/nvim/
-
 	sleep 1
 
 	installGraphicsDrivers
@@ -104,13 +91,65 @@ installGraphicsDrivers() {
 
 	if [[ $gpuInfo == *"NVIDIA Corporation"* ]]; then
 		echo "NVIDIA GPU detected. Installing NVIDIA drivers..."
-		sudo add-apt-repository ppa:graphics-drivers/ppa && sudo dpkg --add-architecture i386 && sudo nala update && sudo nala install -y nvidia-driver-555 libvulkan1 libvulkan1:i386
+
+		sudo add-apt-repository ppa:graphics-drivers/ppa
+		sudo dpkg --add-architecture i386
+		sudo nala update
+		sudo nala install nvidia-driver-555 libvulkan1 libvulkan1:i386 -y
 	elif [[ $gpu_info == *"Advanced Micro Devices"* ]]; then
 		echo "AMD GPU detected. Installing AMD drivers..."
-		sudo add-apt-repository ppa:kisak/kisak-mesa && sudo dpkg --add-architecture i386 && sudo nala update && sudo nala upgrade && sudo nala install -y libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386
+
+		sudo add-apt-repository ppa:kisak/kisak-mesa
+		sudo dpkg --add-architecture i386
+		sudo nala update
+		sudo nala upgrade
+		sudo nala install libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 -y
 	else
 		echo "No NVIDIA or AMD GPU detected."
 	fi
+}
+
+curlDownloads() {
+	# Zoxide (smarter `cd` command)
+	displayInstallMessage "zoxide"
+	curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+
+	# Nala (APT frontend replacement)
+	displayInstallMessage "nala"
+	curl https://gitlab.com/volian/volian-archive/-/raw/main/install-nala.sh | bash
+
+	# Neovim
+	displayInstallMessage "neovim"
+	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+	sudo rm -rf /opt/nvim
+	sudo tar -C /opt -xzf nvim-linux64.tar.gz
+
+	if [ ! -d ~/.config/nvim/ ]; then
+		mkdir ~/.config/nvim/
+	fi
+
+	mv "../Shell Configs/init.lua" ~/.config/nvim/
+	rm nvim-linux64.tar.gz
+}
+
+setupRepositories() {
+	# Fastfetch
+	sudo add-apt-repository ppa:zhangsongcui3371/fastfetch
+
+	# Firefox
+	sudo install -d -m 0755 /etc/apt/keyrings
+
+	wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
+
+	gpg -n -q --import --import-options import-show /etc/apt/keyrings/packages.mozilla.org.asc | awk '/pub/{getline; gsub(/^ +| +$/,""); if($0 == "35BAA0B33E9EB396F59CA838C0BA5CE6DC6315A3") print "\nThe key fingerprint matches ("$0").\n"; else print "\nVerification failed: the fingerprint ("$0") does not match the expected one.\n"}'
+
+	echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" | sudo tee -a /etc/apt/sources.list.d/mozilla.list > /dev/null
+
+	echo '
+	Package: *
+	Pin: origin packages.mozilla.org
+	Pin-Priority: 1000
+	' | sudo tee /etc/apt/preferences.d/mozilla
 }
 
 removeDependencies() {
@@ -131,9 +170,6 @@ setup() {
 
 	# Change Date & Time locale to British English and Numeric/Monetary locales to Brazilian Portuguese
 	sudo localectl set-locale LC_TIME=en_GB.UTF8 LC_NUMERIC=pt_BR.UTF8 LC_MONETARY=pt_BR.UTF8
-
-	# Set NumLock to be ON
-	numlockx on
 
 	# Move custom .zshrc file to the correct directory
 	mv "../Shell Configs/zshrc" ~/.zshrc
