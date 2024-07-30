@@ -19,8 +19,12 @@ setopt histignorealldups sharehistory
 bindkey -e
 
 # Allow CTRL + Left/Right Arrows to move cursor between words
-bindkey ";5C" forward-word
-bindkey ";5D" backward-word
+bindkey "^[[1;5D" backward-word
+bindkey "^[[1;5C" forward-word
+
+# Allow Home/End to move cursor to the beginning/end of the line
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
