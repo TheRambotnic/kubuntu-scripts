@@ -11,6 +11,7 @@ installPkgs() {
 	sudo apt install curl
 
 	curlDownloads
+	gitDownloads
 	setupRepositories
 
 	sudo nala update
@@ -133,6 +134,13 @@ curlDownloads() {
 
 	sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+}
+
+gitDownloads() {
+	# FZF (Command-line fuzzy finder)
+	displayInstallMessage "fzf"
+	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+	~/.fzf/install
 }
 
 setupRepositories() {
