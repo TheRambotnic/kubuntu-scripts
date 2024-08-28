@@ -84,11 +84,12 @@ alias cdq="zoxide query -l -s | less"
 alias cls="clear"
 alias ls="ls --color"
 alias lsa="ls --color -a"
-alias devip="hostname -I"
-alias upd-nala="curl https://gitlab.com/volian/volian-archive/-/raw/main/install-nala.sh | bash"
-alias listdeps="apt-cache depends --installed"
+alias devIP="hostname -I"
+alias updNala="curl https://gitlab.com/volian/volian-archive/-/raw/main/install-nala.sh | bash"
+alias listDeps="apt-cache depends --installed"
+alias resetMetaKey="kwriteconfig5 --file ~/.config/kwinrc --group ModifierOnlyShortcuts --key Meta 'org.kde.plasmashell,/PlasmaShell,org.kde.PlasmaShell,activateLauncherMenu' && qdbus org.kde.KWin /KWin reconfigure"
 
-#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 #source <(fzf --zsh)
 
 export NVM_DIR="$HOME/.nvm"
