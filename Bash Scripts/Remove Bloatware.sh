@@ -19,6 +19,8 @@ removeSystemBloatware() {
 		kde-spectacle
 		thunderbird*
 		skanlite
+		haruna
+		neochat
 	)
 
 	# loop through array and remove packages
