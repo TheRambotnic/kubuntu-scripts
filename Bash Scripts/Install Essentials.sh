@@ -129,7 +129,7 @@ curlDownloads() {
 		mkdir ~/.config/nvim/
 	fi
 
-	mv "../Shell Configs/init.lua" ~/.config/nvim/
+	mv "../Shell Configs/init.lua" "../Shell Configs/lua/" ~/.config/nvim/
 	rm nvim-linux64.tar.gz
 
 	sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
