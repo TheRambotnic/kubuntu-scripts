@@ -31,6 +31,8 @@ installPkgs() {
 		zsh
 		htop
 		qdirstat
+        mangohud
+        goverlay
 	)
 
 	for pkg in "${essentialsApt[@]}"; do
