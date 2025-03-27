@@ -1,10 +1,9 @@
-# Bash Scripts for [Kubuntu 24.04.1 LTS](https://kubuntu.org/)
+# Bash Scripts for [Kubuntu 24.04.2 LTS](https://kubuntu.org/)
 These are some bash scripts I've made to make my life easier when installing/removing packages because I seriously can't be bothered to use the terminal to do shit manually... 😓
 
 ## Included:
 * Remove Bloatware.sh
 * Install Essentials.sh
-* Install Developer Packages.sh
 * [Vencord Installer.sh](https://github.com/Vendicated/Vencord)
 * [scrcpy.sh](https://github.com/Genymobile/scrcpy)
 
