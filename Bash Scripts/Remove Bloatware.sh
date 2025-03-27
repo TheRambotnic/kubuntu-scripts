@@ -21,6 +21,8 @@ removeSystemBloatware() {
 		skanlite
 		haruna
 		neochat
+		virt-viewer
+		xterm
 	)
 
 	# loop through array and remove packages
